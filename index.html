@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMMMFBR - Ribeira do Amparo</title>
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Nova Paleta de Cores Médica */
+            --bg-body: #eef2f7; /* Cinza azulado muito claro */
+            --primary: #006064; /* Azul Petróleo Escuro */
+            --secondary: #0097a7; /* Azul Petróleo Médio */
+            --accent: #004d40; /* Verde Escuro Médico */
+            --text-dark: #1a2a3a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--bg-body);
+        }
+
+        /* CABEÇALHO DA CIDADE */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .city-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Aqui será carregada sua imagem logo_prefeitura.jpg */
+        .city-logo-container img {
+            height: 90px;
+            width: auto;
+            border-radius: 5px;
+            background: white; /* Fundo branco para destacar o logo caso seja jpg sem transparência */
+            padding: 5px;
+        }
+
+        .city-info {
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        .sec-saude {
+            text-align: right;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* NOME DO HOSPITAL (GRANDE DESTAQUE) */
+        .hero {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            margin-top: 20px;
+            font-weight: 400;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* SEÇÃO DE DOCUMENTOS (OBJETIVO PRINCIPAL) */
+        .section-docs {
+            padding: 60px 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .doc-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #d1d9e6;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 12px 30px rgba(0,96,100,0.15);
+        }
+
+        .doc-card i {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+        }
+
+        .doc-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .btn-download {
+            background-color: var(--secondary);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            width: 100%;
+            box-sizing: border-box;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-download:hover {
+            background-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* SEÇÃO EQUIPE: DRA AISSA */
+        .section-team {
+            padding: 80px 5%;
+            background-color: #d7e0e5; /* Cinza um pouco mais escuro para contraste */
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .team-icon-box {
+            background: var(--primary);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--white);
+        }
+
+        .team-info h4 {
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .team-info h3 {
+            color: var(--primary);
+            font-size: 2.4rem;
+            margin: 10px 0 25px 0;
+        }
+
+        .team-info p {
+            line-height: 1.8;
+            color: #445;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.2rem; }
+            .team-card { flex-direction: column; text-align: center; padding: 30px; }
+            header { flex-direction: column; text-align: center; gap: 15px; }
+            .sec-saude { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO MUNICIPAL -->
+    <header>
+        <div class="city-logo-container">
+            <!-- Coloque sua imagem com este nome: logo_prefeitura.jpg -->
+            <img src="logo_prefeitura.jpg" alt="Prefeitura Municipal">
+            <div class="city-info">
+                Prefeitura Municipal de<br>Ribeira do Amparo - BA
+            </div>
+        </div>
+        <div class="sec-saude">
+            SECRETARIA MUNICIPAL DE SAÚDE<br>
+            HMMMFBR - GESTÃO HOSPITALAR
+        </div>
+    </header>
+
+    <!-- NOME DO HOSPITAL (GRANDE DESTAQUE) -->
+    <section class="hero">
+        <h1>Hospital Maternidade Maria de Brito Ferreira Rabelo</h1>
+        <p>Cuidando da saúde com amor e dedicação</p>
+    </section>
+
+    <!-- DOCUMENTOS: OBJETIVO PRINCIPAL -->
+    <section class="section-docs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Documentos Oficiais</h2>
+                <p>Clique no arquivo abaixo para download dos formulários editáveis</p>
+            </div>
+
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>APAC - Autorização de Procedimentos</h3>
+                    <a href="docs/apac.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="doc-card">
+                    <i class="fas fa-hospital-alt"></i>
+                    <h3>Relatório de Alta Médica</h3>
+                    <a href="docs/relatorio_alta.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="doc-card">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <h3>Atestado Médico</h3>
+                    <a href="docs/atestado.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="doc-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Declaração de Comparecimento</h3>
+                    <a href="docs/declaracao_comparecimento.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="doc-card">
+                    <i class="fas fa-prescription-bottle-alt"></i>
+                    <h3>Receituário Médico</h3>
+                    <a href="docs/receituario.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+
+                <div class="doc-card">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Laudo de Internação Hospitalar</h3>
+                    <a href="docs/laudo_internacao.pdf" target="_blank" class="btn-download">Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO EQUIPE: DRA AISSA -->
+    <section class="section-team">
+        <div class="container">
+            <div class="team-card">
+                <div class="team-icon-box">
+                    <i class="fas fa-user-md fa-7x"></i>
+                </div>
+                <div class="team-info">
+                    <h4>Direção Médica</h4>
+                    <h3>Dra. Aissa</h3>
+                    <p>À frente da direção médica, a Dra. Aissa conduz nossa equipe com excelência, responsabilidade e compromisso com a saúde. Seu trabalho reflete rigor técnico, ética profissional e atenção aos detalhes, assegurando um atendimento confiável, humano e de alta qualidade em todos os serviços prestados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ FINAL -->
+    <footer>
+        <p><strong>HOSPITAL MATERNIDADE MARIA DE BRITO FERREIRA RABELO</strong></p>
+        <p>Avenida Antônio Germano de Santana, nº 426, Centro | Ribeira do Amparo – BA</p>
+        <p><i class="fas fa-phone-alt"></i> (75) 3439-2004</p>
+    </footer>
+
+</body>
+</html>
